@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 total_day = 466  # Total days back
 commit_frequency = 10  # Commit times per day
 repo_link = "https://github.com/anshc022/repo.git"
-target_months = {1, 2}  # Specify months as integers (e.g., January = 1, February = 2)
+target_months = {7, 2}  # Specify months as integers (e.g., January = 1, February = 2)
 
 # Set up initial values
 tl = total_day
