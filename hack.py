@@ -13,18 +13,15 @@ def main():
     args = arguments()
     curr_date = datetime.now()
     directory = 'repository-' + curr_date.strftime('%Y-%m-%d-%H-%M-%S')
-    repository = args.repository or "https://github.com/anshc022/repo.git"  # Use the correct repository URL
+    repository = args.repository
     if repository is not None:
         start = repository.rfind('/') + 1
         end = repository.rfind('.')
         directory = repository[start:end]
     no_weekends = args.no_weekends
     frequency = args.frequency
-    
-    # Create the directory with exist_ok=True to avoid FileExistsError
-    os.makedirs(directory, exist_ok=True)
+    os.mkdir(directory)
     os.chdir(directory)
-    
     run(['git', 'init'])
     start_date = curr_date.replace(hour=20, minute=0) - timedelta(366)
     for day in (start_date + timedelta(n) for n in range(366)):
@@ -40,7 +37,6 @@ def main():
 
     print('\nRepository generation ' +
           '\x1b[6;30;42mcompleted successfully\x1b[0m!')
-
 
 
 def contribute(date):
@@ -90,7 +86,7 @@ def arguments():
                         repository. If specified, the script pushes the changes
                         to the repository. The link is accepted in SSH or HTTPS
                         format. For example: git@github.com:user/repo.git or
-                        https://github.com/anshc022/auto-git.git""")
+                        https://github.com/user/repo.git""")
     return parser.parse_args()
 
 
