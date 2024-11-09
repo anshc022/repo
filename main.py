@@ -2,7 +2,7 @@ import os
 from datetime import date, time, datetime
 import datetime
 
-total_day = 66 #total days back
+total_day = 466 #total days back
 commit_frequency = 10 #commit time per day
 repo_link = "https://github.com/anshc022/repo.git"
 
